@@ -1,0 +1,45 @@
+inherit kf5
+
+NAME="kexi"
+VERSION=3.0.1
+RELEASE=1
+CATEGORY="Database"
+SUMMARY="KDE visual database application builder"
+DESCRIPTION="Kexi is a visual database applications creator, part of the
+Calligra Suite. It can be used for designing database applications, inserting
+and editing data, performing queries, and processing data."
+HOMEPAGE="https://community.kde.org/Kexi"
+SRC_URI="mirror://kde/stable/kexi/src/kexi-${VERSION}.tar.xz"
+PATCH_URI="
+	3.0.1-cygwin-ftm.patch
+	3.0.1-marblewidget.patch
+"
+
+kexi_CONTENTS="
+	etc/postinstall/kexi.sh
+	usr/bin/cygkexi*
+	usr/bin/cygkformdesigner-*.dll
+	usr/bin/kexi.exe
+	usr/lib/qt5/plugins/kexi/
+	usr/share/applications/org.kde.kexi.desktop
+	usr/share/doc/${NAME}
+	usr/share/icons/hicolor/*/apps/calligrakexi.*
+	usr/share/kexi/
+	usr/share/metainfo/org.kde.kexi.appdata.xml
+"
+PKG_IGNORE="usr/lib/lib*.dll.a"
+
+# avoid use of DISPLAY in CheckGlobalBreezeIcons
+CYGCMAKE_ARGS="-DKEXI_ENABLE_QTGUI_FOR_TESTS=OFF"
+
+src_install() {
+	cd ${B}
+	kf5_install
+
+	# provide hicolor icon for other desktops (breeze-icons is a BR)
+	insinto /usr/share/icons/hicolor/scalable/apps
+	doins /usr/share/icons/breeze/apps/48/calligrakexi.svg
+	insinto /usr/share/icons/hicolor/48x48/apps
+	convert /usr/share/icons/breeze/apps/48/calligrakexi.svg \
+		${D}/usr/share/icons/hicolor/48x48/apps/calligrakexi.png
+}

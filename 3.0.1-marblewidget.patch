@@ -1,0 +1,13 @@
+--- origsrc/kexi-3.0.1/cmake/modules/FindKexiMarble.cmake	2017-03-09 03:27:06.562550900 -0600
++++ src/kexi-3.0.1/cmake/modules/FindKexiMarble.cmake	2017-07-18 01:46:51.092340400 -0500
+@@ -62,8 +62,8 @@ if ( MARBLE_INCLUDE_DIR AND MARBLE_GLOBA
+    set( MARBLE_FIND_QUIETLY TRUE )
+ endif ()
+ 
+-find_path( MARBLE_INCLUDE_DIR NAMES marble/MarbleMap.h PATH_SUFFIXES marble)
+-find_file( MARBLE_GLOBAL_HEADER NAMES marble/MarbleGlobal.h PATH_SUFFIXES marble)
++find_path( MARBLE_INCLUDE_DIR NAMES marble/MarbleMap.h PATH_SUFFIXES marble marblewidget-qt5)
++find_file( MARBLE_GLOBAL_HEADER NAMES marble/MarbleGlobal.h PATH_SUFFIXES marble marblewidget-qt5)
+ find_library( MARBLE_LIBRARIES NAMES marblewidget-qt5 )
+ 
+ if(MARBLE_GLOBAL_HEADER)

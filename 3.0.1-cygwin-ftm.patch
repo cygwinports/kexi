@@ -1,0 +1,11 @@
+strcasecmp (BSD, POSIX-1.2001) is used in the bundled libmdb
+
+--- origsrc/kexi-3.0.1/src/migration/mdb/src/CMakeLists.txt	2017-03-09 03:27:06.622552000 -0600
++++ src/kexi-3.0.1/src/migration/mdb/src/CMakeLists.txt	2017-07-18 02:34:04.691045300 -0500
+@@ -1,5 +1,6 @@
+ if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_GNUC OR CMAKE_COMPILER_IS_CLANG)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} \
++        -D_DEFAULT_SOURCE \
+         -Wno-unused-but-set-variable \
+         -Wno-missing-format-attribute \
+         -Wno-sign-compare \
