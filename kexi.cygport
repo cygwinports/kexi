@@ -1,7 +1,7 @@
 inherit kf5
 
 NAME="kexi"
-VERSION=3.0.1
+VERSION=3.0.2
 RELEASE=1
 CATEGORY="Database"
 SUMMARY="KDE visual database application builder"
@@ -24,6 +24,7 @@ kexi_CONTENTS="
 	usr/share/applications/org.kde.kexi.desktop
 	usr/share/doc/${NAME}
 	usr/share/icons/hicolor/*/apps/calligrakexi.*
+	usr/share/locale/*/LC_MESSAGES/kexi*.mo
 	usr/share/kexi/
 	usr/share/metainfo/org.kde.kexi.appdata.xml
 "
